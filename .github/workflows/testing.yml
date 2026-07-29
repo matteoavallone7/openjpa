@@ -31,7 +31,7 @@ jobs:
       - name: Run LRUMap tests
         run: |
           mvn -B -pl :openjpa-lib test \
-          -Dtest=LRUMapTest \
+          -Dtest=LRUMapTest, LRUMapCFTest \
           -Dcheckstyle.skip=true \
           -Drat.skip=true
 
