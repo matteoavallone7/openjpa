@@ -109,6 +109,13 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>@{argLine} ${surefire.jvm.args}</argLine>
+                </configuration>
+            </plugin>
             <!--
                 get the git revision number and set it in the git.revision setting - disabled for now
                 since we need to be able to build from sources zip (when there is no .git/config)
