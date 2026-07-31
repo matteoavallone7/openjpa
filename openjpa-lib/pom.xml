@@ -87,6 +87,10 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <argLine></argLine>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -114,6 +118,33 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <argLine>@{argLine} ${surefire.jvm.args}</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.25.7</version>
+                <dependencies>
+                <dependency>
+                    <groupId>org.pitest</groupId>
+                    <artifactId>pitest-junit5-plugin</artifactId>
+                    <version>1.2.3</version>
+                </dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses>
+                        <param>org.apache.openjpa.lib.util.LRUMap*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>org.apache.openjpa.lib.LRUMapTest</param>
+                    </targetTests>
+                    <outputFormats>
+                        <param>HTML</param>
+                        <param>XML</param>
+                    </outputFormats>
+                    <timestampedReports>false</timestampedReports>
+                    <failWhenNoMutations>false</failWhenNoMutations>
+                    <verbose>true</verbose>
                 </configuration>
             </plugin>
             <!--
