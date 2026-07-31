@@ -135,6 +135,37 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.25.7</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.3</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses>
+                        <param>org.apache.openjpa.kernel.Filters</param>
+                    </targetClasses>
+
+                    <!-- Test packages -->
+                    <targetTests>
+                        <param>org.apache.openjpa.cptests.*</param>
+                        <param>org.apache.openjpa.cftests.*</param>
+                    </targetTests>
+                    <threads>4</threads>
+                    <outputFormats>
+                        <param>HTML</param>
+                        <param>XML</param>
+                    </outputFormats>
+                    <timestampedReports>false</timestampedReports>
+                    <failWhenNoMutations>false</failWhenNoMutations>
+                    <verbose>true</verbose>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>javacc-maven-plugin</artifactId>
                 <version>2.6</version>
