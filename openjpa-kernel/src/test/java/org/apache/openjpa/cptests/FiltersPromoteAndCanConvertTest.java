@@ -149,7 +149,7 @@ class FiltersPromoteAndCanConvertTest {
      * pair of methods mutually inconsistent, which is a defect visible entirely from outside.
      *
      * <p>Pairs involving {@code Object} are covered separately (see
-     * {@link #promotingAgainstObjectYieldsAnUnreachableType()}): when one operand is statically
+     * ): when one operand is statically
      * {@code Object}, promotion has to reason about the value the operand will actually hold at
      * runtime, so a purely static convertibility check is not the right oracle for it.</p>
      */
