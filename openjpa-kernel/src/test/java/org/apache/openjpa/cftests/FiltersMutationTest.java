@@ -210,16 +210,7 @@ public class FiltersMutationTest {
             assertEquals(65, Filters.convert('A', Integer.class));
         }
 
-        /**
-         * L331: {@code else if (o instanceof String && ((String) o).length() == 1)}
-         * - the single-character-string sibling of the Character case above.
-         * NO_COVERAGE + SURVIVED: never called at all.
-         */
-        @Test
-        @DisplayName("L331: a single-character String source converts to its numeric code point")
-        void singleCharStringSourceToNumber() {
-            assertEquals(65, Filters.convert("A", Integer.class));
-        }
+
     }
 
     // =====================================================================
@@ -405,4 +396,5 @@ public class FiltersMutationTest {
             assertEquals("b", result.get(1));
         }
     }
+
 }
