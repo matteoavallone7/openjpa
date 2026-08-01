@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Calendar;
@@ -396,5 +397,78 @@ public class FiltersMutationTest {
             assertEquals("b", result.get(1));
         }
     }
+
+    // Uncovered Mutations
+    // Avevo già testato Long, Integer, Double, Float, and Short
+    @Test
+    public void testGetDefaultForNull_UncoveredBranches() {
+        // Uncovered branch: unsupported class type
+        assertNull(Filters.getDefaultForNull(String.class));
+        // Uncovered branch: null input
+        assertNull(Filters.getDefaultForNull(null));
+    }
+
+    // t dovrebbe essere parsed a Time, io verifico solo ts to timestamp e d to Date
+    @Test
+    public void testParseJDBCTemporalSyntax_TimeAndDefault() {
+        // Covers the 't' branch (Line 1072-1073)
+        // Note: If s is "{t '12:00:00'}", s.substring(2) cuts off "t ", leaving "'12:00:00'"
+        Object timeResult = Filters.parseJDBCTemporalSyntax("{t '12:00:00'}");
+        assertEquals(java.sql.Time.valueOf("12:00:00"), timeResult);
+
+        // Covers the 'else' fallback branch (Lines 1074-1075)
+        Object nullResult = Filters.parseJDBCTemporalSyntax("{x 'unsupported'}");
+        assertNull(nullResult);
+    }
+
+    @Nested
+    class convertToMatchMethodArgumentTest() {
+        // Helper dummy methods to reflect on during testing
+        public void zeroArgs() {}
+        public void singleArg(String a) {}
+        public void multiArgs(String a, int b) {}
+
+        @Test
+        public void testNullMethod_ReturnsOriginalObject() {
+            Object input = "testValue";
+            // 1. Tests method == null -> Branch 1 of early return
+            Object result = Filters.convertToMatchMethodArgument(input, null);
+            assertEquals(input, result);
+        }
+
+        @Test
+        public void testZeroArgMethod_ReturnsOriginalObject() throws Exception {
+            Object input = "testValue";
+            Method zeroArgMethod = this.getClass().getMethod("zeroArgs");
+
+            // 2. Tests parameter count == 0 (length != 1 is TRUE) -> Branch 2 of early return
+            Object result = Filters.convertToMatchMethodArgument(input, zeroArgMethod);
+            assertEquals(input, result);
+        }
+
+        @Test
+        public void testMultiArgMethod_ReturnsOriginalObject() throws Exception {
+            Object input = "testValue";
+            Method multiArgMethod = this.getClass().getMethod("multiArgs", String.class, int.class);
+
+            // 3. Tests parameter count > 1 (length != 1 is TRUE) -> Kills boundary mutants
+            Object result = Filters.convertToMatchMethodArgument(input, multiArgMethod);
+            assertEquals(input, result);
+        }
+
+        @Test
+        public void testSingleArgMethod_DelegatesToConvert() throws Exception {
+            Object input = "123";
+            Method singleArgMethod = this.getClass().getMethod("singleArg", String.class);
+
+            // 4. Parameter count == 1 -> Bypasses early return and calls convert(...)
+            Object result = Filters.convertToMatchMethodArgument(input, singleArgMethod);
+
+            // Assert the result returned by convert(o, String.class, true)
+            assertNotNull(result);
+        }
+    }
+
+
 
 }
