@@ -422,7 +422,7 @@ public class FiltersMutationTest {
     }
 
     @Nested
-    class convertToMatchMethodArgumentTest() {
+    class convertToMatchMethodArgumentTest {
         // Helper dummy methods to reflect on during testing
         public void zeroArgs() {}
         public void singleArg(String a) {}
