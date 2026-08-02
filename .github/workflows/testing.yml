@@ -35,14 +35,28 @@ jobs:
           -Dcheckstyle.skip=true \
           -Drat.skip=true
 
-      - name: Generate JaCoCo report
+      - name: Run Filters tests
+        run: |
+          mvn -B -pl :openjpa-kernel test \
+            -Dtest=*Test,!*_ESTest \
+            -Dcheckstyle.skip=true \
+            -Drat.skip=true
+
+      - name: Generate JaCoCo reports
         if: always()
         run: |
-          mvn -pl :openjpa-lib jacoco:report
+          mvn jacoco:report -pl :openjpa-lib,:openjpa-kernel
 
-      - name: Upload JaCoCo report
+      - name: Upload JaCoCo reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: jacoco-report
-          path: openjpa-lib/target/site/jacoco/
+          name: jacoco-reports
+          path: |
+            openjpa-lib/target/site/jacoco/
+            openjpa-kernel/target/site/jacoco/
+
+
+
+
+
