@@ -1,0 +1,662 @@
+* EvoSuite 1.2.0
+* Going to generate test cases for class: org.apache.openjpa.kernel.Filters
+* Starting Client-0
+* Connecting to master process on port 18301
+* Analyzing classpath:
+  - /Users/matteoavallone/openjpa/openjpa-kernel/target/classes
+  - /Users/matteoavallone/.m2/repository/org/apache/openjpa/openjpa-lib/4.1.1/openjpa-lib-4.1.1.jar
+  - /Users/matteoavallone/.m2/repository/jakarta/jms/jakarta.jms-api/3.1.0/jakarta.jms-api-3.1.0.jar
+  - /Users/matteoavallone/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/commons/commons-pool2/2.12.1/commons-pool2-2.12.1.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/ant/ant/1.10.15/ant-1.10.15.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/ant/ant-launcher/1.10.15/ant-launcher-1.10.15.jar
+  - /Users/matteoavallone/.m2/repository/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/xbean/xbean-asm9-shaded/4.26/xbean-asm9-shaded-4.26.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.1/junit-vintage-engine-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
+  - /Users/matteoavallone/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar
+  - /Users/matteoavallone/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar
+  - /Users/matteoavallone/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.12/byte-buddy-agent-1.14.12.jar
+  - /Users/matteoavallone/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar
+  - /Users/matteoavallone/.m2/repository/io/openliberty/api/io.openliberty.transaction/1.1.74/io.openliberty.transaction-1.1.74.jar
+  - /Users/matteoavallone/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar
+  - /Users/matteoavallone/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/commons/commons-dbcp2/2.13.0/commons-dbcp2-2.13.0.jar
+  - /Users/matteoavallone/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/derby/derbyshared/10.15.2.0/derbyshared-10.15.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/derby/derbytools/10.15.2.0/derbytools-10.15.2.0.jar
+[MASTER] 16:57:09.992 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.time.InstantSource
+[MASTER] 16:57:10.077 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.util.Locale$IsoCountryCode
+[MASTER] 16:57:10.234 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:10.234 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.235 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:10.235 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.239 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:10.239 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.239 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:10.239 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.240 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:10.240 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.240 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:10.240 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.241 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:10.241 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.255 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:10.256 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.258 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:10.258 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.279 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:10.279 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.279 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:10.279 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.325 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:10.325 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.325 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:10.325 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:10.326 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:10.328 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.330 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:10.330 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.330 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:10.330 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.330 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:10.330 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:10.331 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.332 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:10.332 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.332 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:10.332 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:10.333 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:10.437 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.io.ObjectInputFilter
+[MASTER] 16:57:10.575 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.io.ObjectInputFilter$FilterInfo
+* Finished analyzing classpath
+* Generating tests for class org.apache.openjpa.kernel.Filters
+* Test criteria:
+  - Branch Coverage
+  - Mutation testing (weak)
+* Total number of test goals for DYNAMOSA: 1524
+* Using seed 1785941828216
+* Starting evolution
+[Progress:>                             0%] [Cov:>                                  0%]* Initial Number of Goals in DynaMOSA = 273 / 1524
+[MASTER] 16:57:11.145 [logback-1] WARN  TestCluster - Failed to check cache for java.util.LinkedList<E> : Type points to itself
+[MASTER] 16:57:11.399 [logback-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown while loading method  __STATIC_RESET() for class org.apache.openjpa.lib.util.J2DoPrivHelper
+[MASTER] 16:57:11.416 [logback-1] WARN  TestCluster - Failed to check cache for java.util.Comparator<T> : Type points to itself
+[Progress:>                             0%] [Cov:==========>                        30%][MASTER] 16:57:11.887 [logback-2] ERROR ClientNodeImpl - Cannot inform master of change of state
+java.rmi.ServerError: Error occurred in server thread; nested exception is:
+        java.lang.NoClassDefFoundError: [Lorg/apache/openjpa/meta/ClassMetaData;
+        at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:389)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+        at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+        at java.rmi/sun.rmi.transport.StreamRemoteCall.exceptionReceivedFromServer(StreamRemoteCall.java:304)
+        at java.rmi/sun.rmi.transport.StreamRemoteCall.executeCall(StreamRemoteCall.java:280)
+        at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:165)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:215)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:160)
+        at jdk.proxy2/jdk.proxy2.$Proxy7.evosuite_collectStatistics(Unknown Source)
+        at org.evosuite.rmi.service.ClientNodeImpl.updateStatistics(ClientNodeImpl.java:251)
+        at org.evosuite.statistics.StatisticsSender.sendIndividualToMaster(StatisticsSender.java:62)
+        at org.evosuite.statistics.StatisticsListener.lambda$new$0(StatisticsListener.java:76)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NoClassDefFoundError: [Lorg/apache/openjpa/meta/ClassMetaData;
+        at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+        at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3404)
+        at java.base/java.lang.Class.getDeclaredMethods(Class.java:2506)
+        at org.evosuite.utils.generic.GenericMethod.readObject(GenericMethod.java:406)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+        at java.base/java.util.ArrayList.readObject(ArrayList.java:899)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.defaultReadObject(ObjectInputStream.java:647)
+        at org.evosuite.testcase.DefaultTestCase.readObject(DefaultTestCase.java:1217)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+        at java.base/java.util.ArrayList.readObject(ArrayList.java:899)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+        at java.rmi/sun.rmi.server.UnicastRef.unmarshalValue(UnicastRef.java:328)
+        at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:340)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+        at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        ... 1 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class not found: org/apache/openjpa/meta/ProxySetupStateManager: java.lang.NullPointerException: Class not found org/apache/openjpa/meta/ProxySetupStateManager
+        at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:158)
+        at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:126)
+        ... 77 common frames omitted
+Caused by: java.lang.RuntimeException: Class not found: org/apache/openjpa/meta/ProxySetupStateManager: java.lang.NullPointerException: Class not found org/apache/openjpa/meta/ProxySetupStateManager
+        at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:56)
+        at org.evosuite.shaded.org.objectweb.asm.SymbolTable.addMergedType(SymbolTable.java:1202)
+        at org.evosuite.shaded.org.objectweb.asm.Frame.merge(Frame.java:1299)
+        at org.evosuite.shaded.org.objectweb.asm.Frame.merge(Frame.java:1197)
+        at org.evosuite.shaded.org.objectweb.asm.MethodWriter.computeAllFrames(MethodWriter.java:1610)
+        at org.evosuite.shaded.org.objectweb.asm.MethodWriter.visitMaxs(MethodWriter.java:1546)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(MethodVisitor.java:773)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(MethodVisitor.java:773)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(MethodVisitor.java:773)
+        at org.evosuite.runtime.instrumentation.LoopCounterMethodAdapter.visitMaxs(LoopCounterMethodAdapter.java:48)
+        at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(MethodNode.java:769)
+        at org.evosuite.shaded.org.objectweb.asm.commons.JSRInlinerAdapter.visitEnd(JSRInlinerAdapter.java:158)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(MethodVisitor.java:783)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(MethodVisitor.java:783)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(MethodVisitor.java:783)
+        at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(MethodNode.java:772)
+        at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(MethodNode.java:649)
+        at org.evosuite.shaded.org.objectweb.asm.tree.ClassNode.accept(ClassNode.java:452)
+        at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:282)
+        at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:135)
+        at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:149)
+        ... 78 common frames omitted
+Caused by: java.lang.NullPointerException: Class not found org/apache/openjpa/meta/ProxySetupStateManager
+        at org.evosuite.runtime.util.ComputeClassWriter.typeInfo(ComputeClassWriter.java:179)
+        at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:53)
+        ... 98 common frames omitted
+[Progress:>                             2%] [Cov:================>                  47%][MASTER] 16:57:17.164 [logback-1] WARN  TestCluster - Failed to check cache for java.util.function.Consumer<T> : Type points to itself
+[Progress:>                             3%] [Cov:================>                  48%][MASTER] 16:57:20.742 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:20.742 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.742 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:20.742 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:20.743 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:20.744 [logback-2] ERROR ClientNodeImpl - Error when generating tests for: org.apache.openjpa.kernel.Filters with seed 1785941828216. Configuration id : null
+java.lang.NoClassDefFoundError: org/mockito/internal/creation/bytebuddy/MockMethodAdvice
+        at java.base/java.lang.Class.getDeclaringClass0(Native Method)
+        at java.base/java.lang.Class.getEnclosingClass(Class.java:1615)
+        at org.evosuite.setup.TestUsageChecker.canUse(TestUsageChecker.java:168)
+        at org.evosuite.setup.ConcreteClassAnalyzer.tryReflection(ConcreteClassAnalyzer.java:253)
+        at org.evosuite.setup.ConcreteClassAnalyzer.handleAbstractClassOrInterface(ConcreteClassAnalyzer.java:205)
+        at org.evosuite.setup.ConcreteClassAnalyzer.computeConcreteClasses(ConcreteClassAnalyzer.java:108)
+        at org.evosuite.setup.ConcreteClassAnalyzer.lambda$getConcreteClasses$0(ConcreteClassAnalyzer.java:89)
+        at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1220)
+        at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:89)
+        at org.evosuite.seeding.CastClassManager.withConcreteClasses(CastClassManager.java:96)
+        at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+        at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+        at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+        at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+        at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+        at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+        at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+        at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+        at org.evosuite.seeding.CastClassManager.addAssignableClass(CastClassManager.java:556)
+        at org.evosuite.seeding.CastClassManager.selectCastClass(CastClassManager.java:221)
+        at org.evosuite.utils.generic.GenericClassImpl.getGenericTypeVariableInstantiation(GenericClassImpl.java:578)
+        at org.evosuite.utils.generic.GenericClassImpl.getGenericInstantiation(GenericClassImpl.java:529)
+        at org.evosuite.utils.generic.GenericClassImpl.getGenericInstantiation(GenericClassImpl.java:509)
+        at org.evosuite.utils.generic.GenericAccessibleObject.getGenericInstantiation(GenericAccessibleObject.java:272)
+        at org.evosuite.utils.generic.GenericMethod.getGenericInstantiation(GenericMethod.java:308)
+        at org.evosuite.utils.generic.GenericMethod.getGenericInstantiation(GenericMethod.java:46)
+        at org.evosuite.setup.TestCluster.getRandomCallFor(TestCluster.java:671)
+        at org.evosuite.testcase.TestFactory.insertRandomCallOnObjectAt(TestFactory.java:2325)
+        at org.evosuite.testcase.mutation.RandomInsertion.insertStatement(RandomInsertion.java:123)
+        at org.evosuite.testcase.TestFactory.insertRandomStatement(TestFactory.java:2352)
+        at org.evosuite.testcase.factories.RandomLengthTestFactory.getRandomTestCase(RandomLengthTestFactory.java:75)
+        at org.evosuite.testcase.factories.RandomLengthTestFactory.getChromosome(RandomLengthTestFactory.java:94)
+        at org.evosuite.testcase.factories.RandomLengthTestFactory.getChromosome(RandomLengthTestFactory.java:38)
+        at org.evosuite.ga.metaheuristics.mosa.AbstractMOSA.breedNextGeneration(AbstractMOSA.java:191)
+        at org.evosuite.ga.metaheuristics.mosa.DynaMOSA.evolve(DynaMOSA.java:72)
+        at org.evosuite.ga.metaheuristics.mosa.DynaMOSA.generateSolution(DynaMOSA.java:173)
+        at org.evosuite.ga.metaheuristics.TestSuiteAdapter.generateSolution(TestSuiteAdapter.java:136)
+        at org.evosuite.strategy.MOSuiteStrategy.generateTests(MOSuiteStrategy.java:122)
+        at org.evosuite.TestSuiteGenerator.generateTests(TestSuiteGenerator.java:630)
+        at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:208)
+        at org.evosuite.rmi.service.ClientNodeImpl.lambda$startNewSearch$0(ClientNodeImpl.java:140)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.ClassNotFoundException: org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher
+        ... 46 common frames omitted
+* Computation finished
+[MASTER] 16:57:20.854 [main] ERROR SearchStatistics - No statistics has been saved because EvoSuite failed to generate any test case
+[MASTER] 16:57:20.961 [main] ERROR TestGeneration - failed to write statistics data
+(base) matteoavallone@MacBookPro openjpa-kernel % JAVA_TOOL_OPTIONS="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED" java -jar /Users/matteoavallone/Downloads/evosuite-1.2.0.jar -class org.apache.openjpa.kernel.Filters -projectCP "target/classes:$(tr ':' '\n' < cp.txt | grep -v 'mockito' | grep -v 'byte-buddy' | tr '\n' ':')" -Dsearch_budget=300 -Dcriterion=BRANCH:WEAKMUTATION -Dtest_dir=src/test/java -Dassertions=true
+Picked up JAVA_TOOL_OPTIONS: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED
+* EvoSuite 1.2.0
+* Going to generate test cases for class: org.apache.openjpa.kernel.Filters
+* Starting Client-0
+* Connecting to master process on port 19835
+* Analyzing classpath:
+  - target/classes
+  - /Users/matteoavallone/.m2/repository/org/apache/openjpa/openjpa-lib/4.1.1/openjpa-lib-4.1.1.jar
+  - /Users/matteoavallone/.m2/repository/jakarta/jms/jakarta.jms-api/3.1.0/jakarta.jms-api-3.1.0.jar
+  - /Users/matteoavallone/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/commons/commons-pool2/2.12.1/commons-pool2-2.12.1.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/ant/ant/1.10.15/ant-1.10.15.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/ant/ant-launcher/1.10.15/ant-launcher-1.10.15.jar
+  - /Users/matteoavallone/.m2/repository/org/osgi/org.osgi.core/4.2.0/org.osgi.core-4.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/xbean/xbean-asm9-shaded/4.26/xbean-asm9-shaded-4.26.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.1/junit-vintage-engine-5.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar
+  - /Users/matteoavallone/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
+  - /Users/matteoavallone/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar
+  - /Users/matteoavallone/.m2/repository/io/openliberty/api/io.openliberty.transaction/1.1.74/io.openliberty.transaction-1.1.74.jar
+  - /Users/matteoavallone/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar
+  - /Users/matteoavallone/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/commons/commons-dbcp2/2.13.0/commons-dbcp2-2.13.0.jar
+  - /Users/matteoavallone/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/derby/derbyshared/10.15.2.0/derbyshared-10.15.2.0.jar
+  - /Users/matteoavallone/.m2/repository/org/apache/derby/derbytools/10.15.2.0/derbytools-10.15.2.0.jar
+[MASTER] 16:57:56.863 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.time.InstantSource
+[MASTER] 16:57:56.945 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.util.Locale$IsoCountryCode
+[MASTER] 16:57:57.112 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: jdk.Exported
+[MASTER] 16:57:57.112 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.113 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebParam
+[MASTER] 16:57:57.113 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.115 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebService
+[MASTER] 16:57:57.115 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.115 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.HandlerChain
+[MASTER] 16:57:57.115 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.116 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebMethod
+[MASTER] 16:57:57.116 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.117 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.WebResult
+[MASTER] 16:57:57.117 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.118 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.Oneway
+[MASTER] 16:57:57.118 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.119 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.InitParam
+[MASTER] 16:57:57.119 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.121 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPBinding
+[MASTER] 16:57:57.121 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.123 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandler
+[MASTER] 16:57:57.123 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.123 [logback-2] ERROR ConcreteClassAnalyzer - Problem for org.apache.openjpa.kernel.Filters. Class not found: javax.jws.soap.SOAPMessageHandlers
+[MASTER] 16:57:57.123 [logback-2] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 16:57:57.255 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.io.ObjectInputFilter
+[MASTER] 16:57:57.392 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.io.ObjectInputFilter$FilterInfo
+* Finished analyzing classpath
+* Generating tests for class org.apache.openjpa.kernel.Filters
+* Test criteria:
+  - Branch Coverage
+  - Mutation testing (weak)
+* Total number of test goals for DYNAMOSA: 1524
+* Using seed 1785941875272
+* Starting evolution
+[Progress:>                             0%] [Cov:>                                  0%]* Initial Number of Goals in DynaMOSA = 273 / 1524
+[MASTER] 16:57:57.933 [logback-1] WARN  TestCluster - Failed to check cache for java.util.LinkedList<E> : Type points to itself
+[MASTER] 16:57:58.183 [logback-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown while loading method  __STATIC_RESET() for class org.apache.openjpa.lib.util.J2DoPrivHelper
+[Progress:>                             0%] [Cov:========>                          25%][MASTER] 16:57:58.863 [logback-2] ERROR ClientNodeImpl - Cannot inform master of change of state
+java.rmi.ServerError: Error occurred in server thread; nested exception is:
+        java.lang.NoClassDefFoundError: [Lorg/apache/openjpa/meta/ClassMetaData;
+        at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:389)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+        at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+        at java.rmi/sun.rmi.transport.StreamRemoteCall.exceptionReceivedFromServer(StreamRemoteCall.java:304)
+        at java.rmi/sun.rmi.transport.StreamRemoteCall.executeCall(StreamRemoteCall.java:280)
+        at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:165)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:215)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:160)
+        at jdk.proxy2/jdk.proxy2.$Proxy7.evosuite_collectStatistics(Unknown Source)
+        at org.evosuite.rmi.service.ClientNodeImpl.updateStatistics(ClientNodeImpl.java:251)
+        at org.evosuite.statistics.StatisticsSender.sendIndividualToMaster(StatisticsSender.java:62)
+        at org.evosuite.statistics.StatisticsListener.lambda$new$0(StatisticsListener.java:76)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NoClassDefFoundError: [Lorg/apache/openjpa/meta/ClassMetaData;
+        at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+        at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3404)
+        at java.base/java.lang.Class.getDeclaredMethods(Class.java:2506)
+        at org.evosuite.utils.generic.GenericMethod.readObject(GenericMethod.java:406)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+        at java.base/java.util.ArrayList.readObject(ArrayList.java:899)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.defaultReadObject(ObjectInputStream.java:647)
+        at org.evosuite.testcase.DefaultTestCase.readObject(DefaultTestCase.java:1217)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+        at java.base/java.util.ArrayList.readObject(ArrayList.java:899)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2457)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+        at java.rmi/sun.rmi.server.UnicastRef.unmarshalValue(UnicastRef.java:328)
+        at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:340)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+        at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+        at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        ... 1 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class not found: org/apache/openjpa/meta/ProxySetupStateManager: java.lang.NullPointerException: Class not found org/apache/openjpa/meta/ProxySetupStateManager
+        at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:158)
+        at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:126)
+        ... 77 common frames omitted
+Caused by: java.lang.RuntimeException: Class not found: org/apache/openjpa/meta/ProxySetupStateManager: java.lang.NullPointerException: Class not found org/apache/openjpa/meta/ProxySetupStateManager
+        at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:56)
+        at org.evosuite.shaded.org.objectweb.asm.SymbolTable.addMergedType(SymbolTable.java:1202)
+        at org.evosuite.shaded.org.objectweb.asm.Frame.merge(Frame.java:1299)
+        at org.evosuite.shaded.org.objectweb.asm.Frame.merge(Frame.java:1197)
+        at org.evosuite.shaded.org.objectweb.asm.MethodWriter.computeAllFrames(MethodWriter.java:1610)
+        at org.evosuite.shaded.org.objectweb.asm.MethodWriter.visitMaxs(MethodWriter.java:1546)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(MethodVisitor.java:773)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(MethodVisitor.java:773)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(MethodVisitor.java:773)
+        at org.evosuite.runtime.instrumentation.LoopCounterMethodAdapter.visitMaxs(LoopCounterMethodAdapter.java:48)
+        at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(MethodNode.java:769)
+        at org.evosuite.shaded.org.objectweb.asm.commons.JSRInlinerAdapter.visitEnd(JSRInlinerAdapter.java:158)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(MethodVisitor.java:783)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(MethodVisitor.java:783)
+        at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(MethodVisitor.java:783)
+        at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(MethodNode.java:772)
+        at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(MethodNode.java:649)
+        at org.evosuite.shaded.org.objectweb.asm.tree.ClassNode.accept(ClassNode.java:452)
+        at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:282)
+        at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:135)
+        at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:149)
+        ... 78 common frames omitted
+Caused by: java.lang.NullPointerException: Class not found org/apache/openjpa/meta/ProxySetupStateManager
+        at org.evosuite.runtime.util.ComputeClassWriter.typeInfo(ComputeClassWriter.java:179)
+        at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:53)
+        ... 98 common frames omitted
+[Progress:>                             0%] [Cov:===========>                       33%][MASTER] 16:57:59.582 [logback-1] WARN  TestCluster - Failed to check cache for java.util.Comparator<T> : Type points to itself
+[Progress:>                             2%] [Cov:================>                  48%][MASTER] 16:58:06.879 [logback-1] WARN  TestCluster - Failed to check cache for java.util.function.Consumer<T> : Type points to itself
+[Progress:========>                     29%] [Cov:=====================>             62%][MASTER] 16:59:26.038 [logback-1] WARN  TestCluster - Failed to check cache for java.time.temporal.TemporalQuery<R> : Type points to itself
+[Progress:==============================100%] [Cov:======================>            64%]
+* Search finished after 301s and 7035 generations, 1439930 statements, best individual has fitness: 539.0
+[MASTER] 17:02:58.975 [logback-2] ERROR ClientNodeImpl - Cannot inform master of change of state
+java.rmi.MarshalException: error marshalling arguments; nested exception is:
+        java.net.SocketException: Broken pipe
+        at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:161)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:215)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:160)
+        at jdk.proxy2/jdk.proxy2.$Proxy7.evosuite_collectStatistics(Unknown Source)
+        at org.evosuite.rmi.service.ClientNodeImpl.updateStatistics(ClientNodeImpl.java:251)
+        at org.evosuite.statistics.StatisticsSender.sendIndividualToMaster(StatisticsSender.java:62)
+        at org.evosuite.statistics.StatisticsSender.executedAndThenSendIndividualToMaster(StatisticsSender.java:91)
+        at org.evosuite.TestSuiteGenerator.generateTests(TestSuiteGenerator.java:636)
+        at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:208)
+        at org.evosuite.rmi.service.ClientNodeImpl.lambda$startNewSearch$0(ClientNodeImpl.java:140)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.net.SocketException: Broken pipe
+        at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+        at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+        at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+        at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+        at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+        at java.base/java.io.BufferedOutputStream.write(BufferedOutputStream.java:127)
+        at java.base/java.io.ObjectOutputStream$BlockDataOutputStream.drain(ObjectOutputStream.java:1886)
+        at java.base/java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(ObjectOutputStream.java:1795)
+        at java.base/java.io.ObjectOutputStream.writeNonProxyDesc(ObjectOutputStream.java:1289)
+        at java.base/java.io.ObjectOutputStream.writeClassDesc(ObjectOutputStream.java:1234)
+        at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1430)
+        at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1181)
+        at java.base/java.io.ObjectOutputStream.writeFatalException(ObjectOutputStream.java:1602)
+        at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:353)
+        at java.rmi/sun.rmi.server.UnicastRef.marshalValue(UnicastRef.java:294)
+        at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:156)
+        ... 14 common frames omitted
+[MASTER] 17:02:58.975 [logback-2] ERROR ClientNodeImpl - Error when generating tests for: org.apache.openjpa.kernel.Filters with seed 1785941875272. Configuration id : null
+java.lang.IllegalStateException: java.rmi.MarshalException: error marshalling arguments; nested exception is:
+        java.net.SocketException: Broken pipe
+        at org.evosuite.rmi.service.ClientNodeImpl.updateStatistics(ClientNodeImpl.java:254)
+        at org.evosuite.statistics.StatisticsSender.sendIndividualToMaster(StatisticsSender.java:62)
+        at org.evosuite.statistics.StatisticsSender.executedAndThenSendIndividualToMaster(StatisticsSender.java:91)
+        at org.evosuite.TestSuiteGenerator.generateTests(TestSuiteGenerator.java:636)
+        at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:208)
+        at org.evosuite.rmi.service.ClientNodeImpl.lambda$startNewSearch$0(ClientNodeImpl.java:140)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.rmi.MarshalException: error marshalling arguments; nested exception is:
+        java.net.SocketException: Broken pipe
+        at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:161)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:215)
+        at java.rmi/java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:160)
+        at jdk.proxy2/jdk.proxy2.$Proxy7.evosuite_collectStatistics(Unknown Source)
+        at org.evosuite.rmi.service.ClientNodeImpl.updateStatistics(ClientNodeImpl.java:251)
+        ... 10 common frames omitted
+Caused by: java.net.SocketException: Broken pipe
+        at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:425)
+        at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:445)
+        at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:831)
+        at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1035)
+        at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+        at java.base/java.io.BufferedOutputStream.write(BufferedOutputStream.java:127)
+        at java.base/java.io.ObjectOutputStream$BlockDataOutputStream.drain(ObjectOutputStream.java:1886)
+        at java.base/java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(ObjectOutputStream.java:1795)
+        at java.base/java.io.ObjectOutputStream.writeNonProxyDesc(ObjectOutputStream.java:1289)
+        at java.base/java.io.ObjectOutputStream.writeClassDesc(ObjectOutputStream.java:1234)
+        at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1430)
+        at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1181)
+        at java.base/java.io.ObjectOutputStream.writeFatalException(ObjectOutputStream.java:1602)
+        at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:353)
+        at java.rmi/sun.rmi.server.UnicastRef.marshalValue(UnicastRef.java:294)
+        at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:156)
+        ... 14 common frames omitted
+* Computation finished
+[MASTER] 17:02:59.088 [main] ERROR SearchStatistics - No statistics has been saved because EvoSuite failed to generate any test case
+[MASTER] 17:02:59.195 [main] ERROR TestGeneration - failed to write statistics data
