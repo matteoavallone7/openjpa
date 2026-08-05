@@ -1,0 +1,45 @@
+* EvoSuite 1.2.0
+* Going to generate test cases for class: org.apache.openjpa.lib.util.LRUMap
+* Starting Client-0
+* Connecting to master process on port 18128
+* Analyzing classpath:
+  - target/classes
+  - target/test-classes
+[MASTER] 15:51:36.999 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.io.ObjectInputFilter
+[MASTER] 15:51:37.015 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.io.ObjectInputFilter$FilterInfo
+[MASTER] 15:51:37.034 [logback-1] WARN  InheritanceTree - Class not in inheritance graph: java.util.Locale$IsoCountryCode
+* Finished analyzing classpath
+* Generating tests for class org.apache.openjpa.lib.util.LRUMap
+* Test criteria:
+  - Branch Coverage
+  - Mutation testing (weak)
+* Total number of test goals for DYNAMOSA: 81
+* Using seed 1785937896084
+[Progress:>                             0%] [Cov:>                                  0%]* Starting evolution
+* Initial Number of Goals in DynaMOSA = 54 / 81
+[Progress:==>                           8%] [Cov:==============================>    86%][MASTER] 15:51:42.775 [logback-1] WARN  TestCluster - Failed to check cache for java.util.function.Function<T, R> : Type points to itself
+[Progress:==============================100%] [Cov:=================================> 95%]
+* Search finished after 61s and 285 generations, 132643 statements, best individual has fitness: 6.0
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 100%
+* Total number of goals: 19
+* Number of covered goals: 19
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 90%
+* Total number of goals: 62
+* Number of covered goals: 56
+* Generated 9 tests with total length 25
+* Resulting test suite's coverage: 95% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 69%
+* Compiling and checking tests
+* Permissions denied during test execution:
+  - java.lang.RuntimePermission:
+         writeFileDescriptor: 14
+* Writing tests to file
+* Writing JUnit test case 'LRUMap_ESTest' to src/test/java/
+* Done!
+
+* Computation finished

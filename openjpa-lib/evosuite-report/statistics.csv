@@ -1,0 +1,3 @@
+TARGET_CLASS,criterion,Coverage,Total_Goals,Covered_Goals
+org.apache.openjpa.lib.util.LRUMap,BRANCH;WEAKMUTATION,0.9516129032258065,81,75
+org.apache.openjpa.lib.util.LRUMap,BRANCH;WEAKMUTATION,0.9516129032258065,81,75

@@ -214,6 +214,15 @@ openjpa.enhancer.revision=${pcenhancer.git.revision}${uncommitted.changes}
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <testExcludes>
+                        <testExclude>org/apache/openjpa/lib/evosuite/**/*.java</testExclude>
+                    </testExcludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
