@@ -17,42 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Black-box tests for the arithmetic operations of {@code Filters}:
- * {@code add}, {@code subtract}, {@code multiply}, {@code divide}, {@code mod}, {@code power} and
- * {@code round}, all with the shape {@code (Object o1, Class<?> c1, Object o2, Class<?> c2)}.
- *
- * <p><b>Domain model.</b> Each operation takes <i>four</i> inputs, not two, and the two extra
- * ones are what make this family interesting to test from the outside: the caller passes the
- * <b>declared</b> type of each operand alongside its value. That gives three dimensions:</p>
- * <ol>
- *   <li><b>the operand types relative to each other</b> — identical, or requiring promotion
- *       (integral with floating point, fixed precision with arbitrary precision);</li>
- *   <li><b>the declared type relative to the runtime type</b> — they may coincide, or the declared
- *       type may be a supertype such as {@code Number}, which is what happens when an operand
- *       comes from an untyped query parameter;</li>
- *   <li><b>the values</b> — ordinary, identity elements (0 and 1), negative, at the limits of the
- *       type, and the singular values of each operation (division and modulo by zero, a zero
- *       exponent).</li>
- * </ol>
- *
- * <p><b>Oracles.</b> None of the seven methods documents anything beyond "add/subtract/... the
- * given values", so the expected results come from the arithmetic the words name. Where that is
- * not enough — the exact result type of a mixed-type operation, the disposal of a lost fraction —
- * the tests assert algebraic properties instead: that addition commutes, that subtraction undoes
- * addition, and that the result type is the one {@code promote} nominates for the operand pair.
- * Those hold for any correct implementation and none of them describes one.</p>
- */
+
 @DisplayName("Filters arithmetic: add / subtract / multiply / divide / mod / power / round")
 class FiltersArithmeticTest {
 
-    // ------------------------------------------------------ basic operations
 
-    /**
-     * EC — both operands of the same integral type, the simplest class of inputs. Values include
-     * the additive identity, a negative operand and the ordinary case, so a single parameterised
-     * test covers the interior of the domain for each of the four basic operations.
-     */
+    // EC — both operands have the same integral type. Tests normal values as well as zero and negative values.
     @ParameterizedTest(name = "{0} on ({1}, {2}) = {3}")
     @MethodSource("sameTypeIntegerCases")
     @DisplayName("the four basic operations on two ints")
@@ -78,13 +48,7 @@ class FiltersArithmeticTest {
                 Arguments.of("mod", 6, 3, 0));
     }
 
-    /**
-     * EC — operands of different types. The contract of {@code promote} says what type they
-     * "should both be converted to before performing any operations between them", which is
-     * precisely this situation, so the arithmetic must be carried out in the promoted type and
-     * not in either operand's own type. A mixed int/double addition performed in {@code int}
-     * would silently drop the fraction, which is exactly what this case is here to catch.
-     */
+    // EC — operands have different types. The test checks that they are promoted to the correct type before performing the operation.
     @ParameterizedTest(name = "add({0} as {1}, {2} as {3}) = {4}")
     @MethodSource("mixedTypeCases")
     @DisplayName("mixed operand types are promoted before the operation")
@@ -102,13 +66,7 @@ class FiltersArithmeticTest {
                         new BigDecimal("3.5")));
     }
 
-    /**
-     * Property — the result type of a binary operation must be the type {@code promote} nominates
-     * for the operand pair. This is the oracle for combinations whose result type the one-line
-     * contracts do not state, and it ties the arithmetic family back to the type machinery: if
-     * they disagreed, a caller could not predict the type of an expression from its operands,
-     * which is the whole point of exposing {@code promote} publicly.
-     */
+    // Checks that the result type matches the type returned by {@code promote}.
     @ParameterizedTest(name = "add({0}, {1}) has type promote({0}, {1})")
     @MethodSource("promotionPairs")
     @Tag("consistency")
@@ -130,10 +88,7 @@ class FiltersArithmeticTest {
     }
 
     /**
-     * EC — the declared type is a supertype of the runtime type. A query parameter whose type is
-     * only known as {@code Number} still has a concrete value at runtime, and the operation must
-     * work from what the value actually is. This dimension exists only because the API takes the
-     * types as explicit arguments, and it is easy to overlook precisely for that reason.
+     * Verifica che il calcolo funzioni anche se passiamo una classe generica come 'Number.class'.
      */
     @Test
     @DisplayName("an operand declared as a supertype still uses its runtime value")
@@ -143,12 +98,9 @@ class FiltersArithmeticTest {
                 "operands declared as Number were not added by value");
     }
 
-    // ------------------------------------------------------------ properties
 
     /**
-     * Property (commutativity) — addition and multiplication of numbers do not depend on operand
-     * order. Any asymmetry would be a defect whatever the concrete result is, so this covers
-     * combinations without having to predict their value.
+     * Property (commutativity)
      */
     @ParameterizedTest(name = "add and multiply commute for ({0}, {2})")
     @MethodSource("promotionPairs")
@@ -162,9 +114,7 @@ class FiltersArithmeticTest {
     }
 
     /**
-     * Property (inverse) — subtracting an operand undoes adding it. Restricted to exact types so
-     * that the property is genuinely expected to hold: with floating point it would be defeated by
-     * representation error, which would say nothing about the SUT.
+     * Property (inverse)
      */
     @Test
     @DisplayName("subtracting undoes adding for exact numeric types")
@@ -173,12 +123,9 @@ class FiltersArithmeticTest {
         assertEquals(7, Filters.subtract(sum, Integer.class, 5, Integer.class));
     }
 
-    // ------------------------------------------------------------ boundaries
 
     /**
-     * Boundary — division by zero, the singular point of {@code divide}. In exact integer
-     * arithmetic the operation is undefined and must be signalled rather than answered; a silent
-     * zero or null here would corrupt a query result.
+     * Boundary — division by zero
      */
     @Test
     @Tag("boundary")
@@ -188,7 +135,7 @@ class FiltersArithmeticTest {
                 () -> Filters.divide(1, Integer.class, 0, Integer.class));
     }
 
-    /** Boundary — modulo by zero, the same singular point for the remainder operation. */
+    /** Boundary — modulo by zero */
     @Test
     @Tag("boundary")
     @DisplayName("integer modulo by zero is signalled, not answered")
@@ -197,12 +144,7 @@ class FiltersArithmeticTest {
                 () -> Filters.mod(1, Integer.class, 0, Integer.class));
     }
 
-    /**
-     * Boundary — floating-point division by zero. Unlike the integral case this is <i>defined</i>
-     * by IEEE 754, so the operation must produce infinity rather than fail. The pair of cases
-     * together shows the operation respects the arithmetic of the promoted type instead of
-     * applying one rule everywhere.
-     */
+
     @Test
     @Tag("boundary")
     @DisplayName("floating-point division by zero yields infinity")
@@ -212,10 +154,7 @@ class FiltersArithmeticTest {
                 "IEEE 754 defines this division; it should not be refused");
     }
 
-    /**
-     * Boundary — the identity and zero exponents of {@code power}, the two values at which the
-     * operation's result is fixed by definition regardless of the base.
-     */
+    // Boundary — Tests the main cases of {@code power} with zero, one and other exponents.
     @ParameterizedTest(name = "power({0}, {1}) = {2}")
     @MethodSource("powerCases")
     @Tag("boundary")
@@ -234,14 +173,7 @@ class FiltersArithmeticTest {
                 Arguments.of(2, -1, 0.5));
     }
 
-    /**
-     * Boundary — arithmetic at the limit of the operand type. Adding one to the largest
-     * representable {@code int} has no correct answer in {@code int}, so the observable question is
-     * whether the operation wraps around silently or escalates to a wider type. Both are defensible
-     * and the contract chooses neither, so the assertion is limited to the one outcome that is
-     * indefensible: quietly producing a value that is neither the mathematical result nor the
-     * documented wrap-around of the promoted type.
-     */
+    // Boundary — Tests addition when an integer is already at its maximum value.
     @Test
     @Tag("boundary")
     @Tag("spec-gap")
@@ -256,30 +188,13 @@ class FiltersArithmeticTest {
                         + "nor the exact mathematical result");
     }
 
-    // ----------------------------------------------------------------- round
 
-    /**
-     * {@code round(Object, Class, Object, Class)} carries <b>no javadoc text whatsoever</b> — not
-     * even a one-line summary. Its name and its two-operand shape indicate rounding a value to a
-     * number of decimal places, but nothing in the published API confirms that reading, states
-     * which rounding mode is used, or says what the second operand means.
-     *
-     * <p>This nested group therefore asserts only what holds under <i>any</i> reading of
-     * "round": that rounding a value which is already at the requested precision changes nothing.
-     * Anything sharper — a specific result for {@code round(2.5, 0)}, say — would be a guess about
-     * half-up versus half-even behaviour, i.e. an implementation detail dressed up as a
-     * requirement. The gap is recorded in the design notes.</p>
-     */
     @Nested
     @DisplayName("round (undocumented)")
     @Tag("spec-gap")
     class Round {
 
-        /**
-         * Invariant — a value that already has no fractional part beyond the requested precision
-         * must survive rounding unchanged. True for every rounding mode, so it is safe to assert
-         * without knowing which one is used.
-         */
+        // Invariant — Rounding an already rounded value should not change it.
         @ParameterizedTest(name = "round({0}, {1}) leaves the value unchanged")
         @MethodSource("org.apache.openjpa.cptests.FiltersArithmeticTest#alreadyRoundedCases")
         @DisplayName("rounding an already-rounded value is a no-op")
@@ -297,7 +212,6 @@ class FiltersArithmeticTest {
                 Arguments.of(0.0d, 0, 0.0));
     }
 
-    // ------------------------------------------------------------- dispatch
 
     /** Dispatches to the operation named by the parameterised case. */
     private static Object apply(String op, Object o1, Class<?> c1, Object o2, Class<?> c2) {

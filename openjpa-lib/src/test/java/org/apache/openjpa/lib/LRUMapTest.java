@@ -20,20 +20,24 @@ public class LRUMapTest {
 
     private TestLRUMap map;
 
+    // Creates a new map before each test to ensure test isolation.
     @BeforeEach
     void setUp() {
         map = new TestLRUMap();
     }
 
+    // Clears the map after each test to release its state.
     @AfterEach
     void tearDown() {
         map.clear();
     }
 
+    // Test implementation of LRUMap used to observe entries removed because of capacity overflow.
     private static class TestLRUMap extends LRUMap {
 
         private final List<Entry<Object,Object>> removedEntries = new ArrayList<>();
 
+        // Records every entry removed due to the map exceeding its maximum size.
         @Override
         public void overflowRemoved(Object key, Object value) {
             removedEntries.add(Map.entry(key, value));
@@ -78,6 +82,7 @@ public class LRUMapTest {
     @Nested
     class SetMaxSizeTests {
 
+        // Verifies that negative maximum sizes are rejected.
         @ParameterizedTest
         @ValueSource(ints = {-1, Integer.MIN_VALUE})
         void rejectNegativeMaximum(int max) {
@@ -158,6 +163,7 @@ public class LRUMapTest {
     @Nested
     class CapacityTests {
 
+        // Verifies that the map is not considered full when its size is below the configured maximum.
         @Test
         void mapNotFullBeforeBoundary() {
 
@@ -291,6 +297,7 @@ public class LRUMapTest {
             map.put(key, value++);
     }
 
+    // Serializes an LRUMap to an in-memory byte array and then deserializes it into a new TestLRUMap instance.
     @SuppressWarnings("unchecked")
     private TestLRUMap serialize(TestLRUMap original) throws Exception {
 
@@ -313,6 +320,7 @@ public class LRUMapTest {
         assertContainsExactly(this.map, keys);
     }
 
+    // Verifies that the target map contains exactly the expected keys and no additional entries.
     private void assertContainsExactly(LRUMap targetMap, String... keys) {
         assertEquals(keys.length, targetMap.size());
         for (String key : keys) {

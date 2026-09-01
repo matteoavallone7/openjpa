@@ -13,43 +13,20 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * ============================================================================
- * BLACK-BOX TEST SUITE
- * ============================================================================
- *
- * Class under test:
- *      {@link Filters}
- *
- * Functional area:
- *      Primitive/wrapper type conversions.
- *
- * Test design technique:
- *      - Equivalence Partitioning
- *      - Boundary Value Analysis (where applicable)
- *
- * Since these methods only classify types, there are no numerical boundary
- * values. The test suite therefore focuses on the admissible equivalence
- * classes defined by the specification.
- */
+
 @DisplayName("Black-box tests for wrap() and unwrap()")
 class FiltersWrapTest {
 
-    /* **********************************************************************
-     *                         wrap(Class)
-     * **********************************************************************/
 
     @Nested
     @DisplayName("wrap(Class)")
     class WrapTests {
 
         /**
-         * EC-W1
+         * EC-W1: Classe di Equivalenza - Tipi Primitivi.
          *
-         * Primitive types.
-         *
-         * Every primitive type shall be converted to its corresponding
-         * wrapper class.
+         * Contratto dell'API: ogni tipo primitivo (es. int.class) deve essere
+         * convertito nella corrispondente classe wrapper (es. Integer.class).
          */
         @ParameterizedTest(name = "{0} -> {1}")
         @MethodSource("org.apache.openjpa.cptests.FiltersWrapTest#primitiveWrapperPairs")
@@ -61,12 +38,11 @@ class FiltersWrapTest {
         }
 
         /**
-         * EC-W2
+         * EC-W2: Classe di Equivalenza - Classi Wrapper già definite.
          *
-         * Wrapper classes.
-         *
-         * Wrapper classes are already reference types and therefore must
-         * be returned unchanged.
+         * Proprio per Idempotenza: wrap(wrap(T)) == wrap(T).
+         * Se passiamo un tipo che è già un wrapper (es. Integer.class), il metodo
+         * non deve apportare alcuna modifica e deve restituire la classe intatta.
          */
         @ParameterizedTest(name = "{0}")
         @MethodSource("org.apache.openjpa.cptests.FiltersWrapTest#wrapperTypes")
@@ -76,12 +52,10 @@ class FiltersWrapTest {
         }
 
         /**
-         * EC-W3
+         * EC-W3: Classe di Equivalenza - Tipi Reference Ordinari.
          *
-         * Ordinary reference types.
-         *
-         * Reference types that are not primitive wrappers must be returned
-         * unchanged.
+         * Le classi reference ordinarie (es. List, StringBuilder) non hanno un
+         * corrispettivo primitivo. Il metodo wrap deve agire come una funzione identità.
          */
         @ParameterizedTest(name = "{0}")
         @MethodSource("org.apache.openjpa.cptests.FiltersWrapTest#referenceTypes")
@@ -91,12 +65,10 @@ class FiltersWrapTest {
         }
 
         /**
-         * EC-W4
+         * EC-W4: Boundary Test - La radice Object.class.
          *
-         * Root Object class.
-         *
-         * Object is already a reference type and therefore should not be
-         * modified.
+         * Object è il tipo di livello più alto nella gerarchia Java. Essendo già un reference,
+         * il wrapping deve restituire la classe Object.class originale.
          */
         @Test
         void shouldReturnObjectClassUnchanged() {
@@ -105,21 +77,17 @@ class FiltersWrapTest {
         }
     }
 
-    /* **********************************************************************
-     *                        unwrap(Class)
-     * **********************************************************************/
+
 
     @Nested
     @DisplayName("unwrap(Class)")
     class UnwrapTests {
 
         /**
-         * EC-U1
+         * EC-U1: Classe di Equivalenza - Tipi Primitivi in ingresso.
          *
-         * Primitive types.
-         *
-         * Primitive types are already unwrapped and shall be returned
-         * unchanged.
+         * Se il tipo è già primitivo (es. int.class), unwrap() non ha nulla da convertire.
+         * Deve garantire l'idempotenza e restituire il valore invariato.
          */
         @ParameterizedTest(name = "{0}")
         @MethodSource("org.apache.openjpa.cptests.FiltersWrapTest#primitiveTypes")
@@ -129,12 +97,10 @@ class FiltersWrapTest {
         }
 
         /**
-         * EC-U2
+         * EC-U2: Classe di Equivalenza - Classi Wrapper.
          *
-         * Wrapper classes.
-         *
-         * Every wrapper class shall be converted into the corresponding
-         * primitive type.
+         * Operazione inversa di wrap(): per ogni classe wrapper (es. Long.class),
+         * unwrap() deve estrarre il corrispondente tipo primitivo (es. long.class).
          */
         @ParameterizedTest(name = "{0} -> {1}")
         @MethodSource("org.apache.openjpa.cptests.FiltersWrapTest#primitiveWrapperPairs")
@@ -146,10 +112,11 @@ class FiltersWrapTest {
         }
 
         /**
-         * EC-U3
+         * EC-U3: Caso Particolare / Specifiche di Dominio - String.class.
          *
-         * String is explicitly excluded from conversion according to the
-         * specification and therefore shall be returned unchanged.
+         * In molti contesti ORM/Filter (come OpenJPA), la classe String viene trattata
+         * in modo speciale. Il contratto specifica esplicitamente che String NON deve
+         * subire alcuna operazione di unwrap.
          */
         @Test
         void shouldLeaveStringUnchanged() {
@@ -158,12 +125,10 @@ class FiltersWrapTest {
         }
 
         /**
-         * EC-U4
+         * EC-U4: Classe di Equivalenza - Tipi Reference Ordinari.
          *
-         * Ordinary reference types.
-         *
-         * Classes that are neither wrappers nor primitives shall be
-         * returned unchanged.
+         * Qualsiasi altra classe che non appartenga alla famiglia dei Wrapper
+         * non può essere "scompattata", quindi deve rimanere invariata.
          */
         @ParameterizedTest(name = "{0}")
         @MethodSource("org.apache.openjpa.cptests.FiltersWrapTest#referenceTypes")
@@ -173,9 +138,6 @@ class FiltersWrapTest {
         }
     }
 
-    /* **********************************************************************
-     *                    Test Data Providers
-     * **********************************************************************/
 
     static Stream<Arguments> primitiveWrapperPairs() {
 

@@ -15,12 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FiltersMutationTest {
 
-    // uncovered branch Calendar.class.isAssignableFrom(type) && o instanceof Date
-    /**
-     * Verifies conversion from Date to Calendar.
-     * The returned Calendar must represent exactly the same instant
-     * as the source Date rather than a default Calendar.
-     */
+
     @Test
     void convertDateToCalendar() {
         Date d = new Date(123456789L);
@@ -35,9 +30,8 @@ public class FiltersMutationTest {
     class PromoteCharacterStringSpecialCasing {
 
         /**
-         * Character is treated as a numeric-compatible type during promotion.
-         * Promoting Character with Integer should therefore produce the
-         * primitive numeric type (int).
+         * Se combiniamo un Character con un Integer, Character viene trattato come numero
+         * e il tipo promosso risultante deve essere il tipo primitivo 'int.class'.
          */
         @Test
         @DisplayName("Character source + plain-number target (not Byte/Short) -> unwrap(target)")
@@ -46,9 +40,8 @@ public class FiltersMutationTest {
         }
 
         /**
-         * Byte and Short are widened to Integer when promoted together with
-         * Character, matching Java's numeric promotion rules.
-         * Character + Byte becomes Integer
+         * Regola del linguaggio Java: Byte e Short promossi insieme a Character
+         * vengono convertiti nel tipo più ampio Integer.class.
          */
         @Test
         @DisplayName("Character source + Byte/Short target -> Integer.class (the ternary's true branch)")
@@ -58,8 +51,7 @@ public class FiltersMutationTest {
         }
 
         /**
-         * Verifies that String follows the same promotion rule as Character
-         * when combined with numeric types.
+         * Le Stringhe seguono la stessa regola dei Character quando combinate con numeri.
          */
         @Test
         @DisplayName("String source + plain-number target -> unwrap(target)")
@@ -76,16 +68,8 @@ public class FiltersMutationTest {
 
 
         /**
-         * w1 != Character
-         * w1 != String
-         * Therefore the Character/String special rule must not execute.
-         * Instead, execution reaches
-         * if (w2Number)
-         *     return unwrap(c2);
-         * which returns byte class
-         * Ensures the Character/String promotion rule applies only to those
-         * two types. Other non-numeric types must follow the generic
-         * numeric promotion path.
+         * Verifica che la regola speciale per Character/String NON si applichi ad altri tipi non numerici
+         * come Boolean. Un Boolean con un Byte deve cadere nella gestione standard (byte.class).
          */
         @Test
         @DisplayName("non-Character/String, non-numeric source is NOT swept into the char/string special case")
@@ -94,8 +78,7 @@ public class FiltersMutationTest {
         }
 
         /**
-         * Verifies the symmetric promotion logic when Character or String
-         * appears as the second operand instead of the first.
+         * Verifica che le regole di promozione siano simmetriche (funzionino anche invertendo l'ordine dei parametri).
          */
         @Test
         @DisplayName("mirror of L144 on the other operand position (L153)")
@@ -108,17 +91,13 @@ public class FiltersMutationTest {
         }
     }
 
-    // =====================================================================
-    // canConvert(Class, Class, boolean) - lines 238, 243, 249
-    // =====================================================================
+
     @Nested
     @DisplayName("canConvert(): temporal/Character/String branches (L238, L243, L249)")
     class CanConvertSurvivors {
 
         /**
-         * Numeric-to-Character conversion is permitted regardless of which
-         * operand is the numeric one, exercising both sides of the compound
-         * conversion condition.
+         * La conversione tra numeri e Character deve essere sempre permessa in entrambi i sensi.
          */
         @Test
         @DisplayName("L238-241: numeric x Character, both operand orders")
@@ -128,9 +107,9 @@ public class FiltersMutationTest {
         }
 
         /**
-         * Numeric-to-String conversion depends on the strictness flag.
-         * The same conversion is accepted in lenient mode and rejected
-         * in strict mode.
+         * La conversione Numero <-> Stringa dipende dal parametro 'strict' (severo):
+         * - In modalità tollerante (strict = false) è permessa.
+         * - In modalità severa (strict = true) è vietata.
          */
         @Test
         @DisplayName("L238-241: numeric x String is strict-gated, both operand orders")
@@ -142,10 +121,7 @@ public class FiltersMutationTest {
         }
 
         /**
-         * L243-244: {@code if (c1 == String.class && c2 == Character.class) return true;}
-         * PIT shows this branch as completely UNEXECUTED by any test
-         * (NO_COVERAGE on the return itself) - this specific (String -> Character)
-         * ordering was simply never called.
+         * La conversione diretta da String a Character è sempre valida in qualsiasi modalità.
          */
         @Test
         @DisplayName("L243-244: String source to Character target is unconditionally convertible")
@@ -155,10 +131,7 @@ public class FiltersMutationTest {
         }
 
         /**
-         * L249: {@code if ((c1==Date.class || c1==Time.class) && c2==Timestamp.class) return false;}
-         * The existing suite covers Time->Timestamp (hits the SECOND disjunct)
-         * but never plain Date->Timestamp (the FIRST disjunct), so that half of
-         * the OR was never independently exercised.
+         * Per regola interna, convertire un java.util.Date generico in java.sql.Timestamp non è permesso.
          */
         @Test
         @DisplayName("L249: Date (not just Time) to Timestamp is explicitly disallowed")
@@ -167,18 +140,13 @@ public class FiltersMutationTest {
         }
     }
 
-    // =====================================================================
-    // convert(Object, Class, boolean) - Calendar/Date, Character/String-to-
-    // Number, JDBC temporal syntax, enum parsing
-    // =====================================================================
+
     @Nested
     @DisplayName("convert(): Calendar<->Date, Character/String-to-Number (L318-332)")
     class ConvertCalendarAndCharacterSurvivors {
 
         /**
-         * L318-321 (Date -> Calendar) is exercised (if-condition KILLED) but its
-         * body is NO_COVERAGE; L323-324 (Calendar -> Date), the mirror, is
-         * SURVIVED outright. Neither direction had a real assertion.
+         * Verifica la conversione da Date a Calendar controllando il tipo e i millisecondi.
          */
         @Test
         @DisplayName("Date source with a Calendar target is boxed into a Calendar")
@@ -200,10 +168,8 @@ public class FiltersMutationTest {
         }
 
         /**
-         * L328: {@code if (o instanceof Character)} inside the "target is a
-         * Number" branch - converting a lone char into a numeric type by its
-         * code point. Never exercised: existing tests convert Characters FROM
-         * numbers, not numbers/Integers FROM a Character.
+         * Un singolo carattere (es. 'A') convertito in un tipo numerico deve restituire
+         * il relativo codice ASCII/Unicode (es. 65).
          */
         @Test
         @DisplayName("L328: a Character source converts to its numeric code point")
@@ -214,20 +180,14 @@ public class FiltersMutationTest {
 
     }
 
-    // =====================================================================
-    // convert()'s numeric dispatch chain + allowNumericConversion() -
-    // lines 401, 428, 430, 432, 440, 442-448
-    // =====================================================================
+
     @Nested
     @DisplayName("convert(): numeric target dispatch + allowNumericConversion() lookup table")
     class NumericDispatchAndAllowConversion {
 
-        // L440: if (!strict || actual == target) return true;
-        // The `actual == target` disjunct looks to be unreachable through the
-        // public API - convert() already short-circuits identical
-        // actual/target pairs at its very first check (o.getClass() == type),
-        // long before allowNumericConversion() is ever called. Only the
-        // `!strict` disjunct is realistically testable here, and it is:
+        /**
+         * In modalità tollerante (strict = false), Double -> Integer è permesso (con troncamento dei decimali: 5.9 -> 5).
+         */
         @Test
         @DisplayName("L440: lenient mode allows a conversion the strict table forbids")
         void lenientModeBypassesTheStrictTable() {
@@ -236,12 +196,7 @@ public class FiltersMutationTest {
         }
 
         /**
-         * L442 (Byte), L443 (Double), L444 (Float), L446 (Long), L447 (Short),
-         * L448 (default false) - the strict whitelist, exercised as a matrix:
-         * one case that the table explicitly ALLOWS and one adjacent case it
-         * explicitly FORBIDS, for each row. This directly targets both the
-         * "negated conditional" and "replaced boolean return with true"
-         * survivors reported on these lines.
+         * In modalità severa (strict = true), Byte NON può essere convertito in Integer e solleva un'eccezione.
          */
         @Test
         @DisplayName("L442: Byte can never convert to anything else under strict mode")
@@ -250,6 +205,9 @@ public class FiltersMutationTest {
                     () -> Filters.convert((byte) 5, Integer.class, true));
         }
 
+        /**
+         * In modalità severa, Double può essere convertito SOLO in Float, ma rifiuta Integer.
+         */
         @Test
         @DisplayName("L443: Double converts only to Float under strict mode")
         void doubleOnlyConvertsToFloatStrictly() {
@@ -258,6 +216,9 @@ public class FiltersMutationTest {
                     () -> Filters.convert(5.5d, Integer.class, true));
         }
 
+        /**
+         * In modalità severa, Float non si converte in Integer.
+         */
         @Test
         @DisplayName("L444: Float never satisfies the strict table's only real target (Double is unreachable here)")
         void floatNeverConvertsStrictly() {
@@ -308,10 +269,8 @@ public class FiltersMutationTest {
         }
 
         /**
-         * L432-433: the lenient catch-all for numeric target types that match
-         * none of the explicitly handled classes - falls back to intValue().
-         * Requires a Number subtype the "assignable" fast path at the top of
-         * convert() won't already intercept.
+         * Per tipi numerici non standard (es. AtomicInteger) in modalità tollerante,
+         * il sistema usa il metodo fallback intValue().
          */
         @Test
         @DisplayName("L432-433: an unrecognized Number target falls back to intValue() when lenient")
@@ -336,21 +295,13 @@ public class FiltersMutationTest {
         // duplicating exactly the same call.
     }
 
-    // =====================================================================
-    // op(float, float, int) / op(BigDecimal, BigDecimal, int) -
-    // lines 598, 679 ("replaced return value with null")
-    // =====================================================================
     @Nested
     @DisplayName("arithmetic op() dispatch: float ROUND, BigDecimal MULTIPLY")
     class ArithmeticReturnValueSurvivors {
 
         /**
-         * L598: {@code return bg.setScale(..., HALF_EVEN).floatValue();} inside
-         * the float overload's OP_ROUND case. A "replaced return value with
-         * null" mutant is killed by any assertion that requires a non-null,
-         * specific numeric result - which this suite's round() tests never
-         * supplied for the float-typed path specifically. HALF_EVEN also
-         * means 2.5 must round to 2 (the even neighbor), not 3.
+         * L'arrotondamento dei tipi float usa la modalità HALF_EVEN (arrotondamento al pari più vicino).
+         * Es. 2.5f diventa 2.0f.
          */
         @Test
         @DisplayName("L598: rounding a float uses HALF_EVEN and returns a real value, not null")
@@ -361,9 +312,7 @@ public class FiltersMutationTest {
         }
 
         /**
-         * L679: {@code case OP_MULTIPLY: return n1.multiply(n2);} in the
-         * BigDecimal overload - never called by the existing suite (only
-         * BigDecimal add/divide appear there).
+         * Verifica che la moltiplicazione tra due BigDecimal restituisca un valore corretto e non null.
          */
         @Test
         @DisplayName("L679: multiplying two BigDecimals returns a real product, not null")
@@ -374,19 +323,14 @@ public class FiltersMutationTest {
         }
     }
 
-    // =====================================================================
-    // splitExpressions() - line 852 ("changed conditional boundary")
-    // =====================================================================
+
     @Nested
     @DisplayName("splitExpressions(): trailing-segment boundary (L852)")
     class SplitExpressionsBoundary {
 
         /**
-         * L852: {@code if (last.length() > 0) exps.add(last);}. A "changed
-         * conditional boundary" mutant flips {@code >} to {@code >=}, which is
-         * only observable when the trailing segment's length is EXACTLY zero
-         * - i.e. the input ends right on the split character. Every existing
-         * test's trailing segment is non-empty, so this boundary was never hit.
+         * Se la stringa termina con la virgola di separazione (es. "A, b,"),
+         * l'ultimo elemento vuoto finale NON deve produrre un elemento vuoto nella lista.
          */
         @Test
         @DisplayName("a trailing split char produces no empty trailing expression")

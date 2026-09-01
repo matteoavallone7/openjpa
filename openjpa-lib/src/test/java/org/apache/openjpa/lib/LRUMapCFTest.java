@@ -40,18 +40,7 @@ public class LRUMapCFTest {
             assertEquals(1, map.get("A"));
             assertEquals(2, map.get("B"));
         }
-        The constructor LRUMap(Map) was considered during structural testing.
-        Executing this path consistently triggers an IllegalStateException
-        originating from the inherited Commons Collections implementation (reuseMapping()), i
-        ndicating an implementation defect rather than an incorrect test.
-        Consequently, this constructor was excluded from the final executable test suite.
-        The stack trace reveals that reuseMapping() was called while inserting the very first key ("A")
-        into an empty map (size = 0).
-        When put("A", 1) is called, addMapping() checks isFull().
-        Because isFull() incorrectly evaluates to true, LRUMap assumes the map is at capacity
-        and attempts to evict and reuse the head entry (header.after). Since the map is empty,
-        header.after is the sentinel header node (which does not exist in the hash table array data[]),
-        causing reuseMapping to fail with IllegalStateException.
+
          */
 
     }

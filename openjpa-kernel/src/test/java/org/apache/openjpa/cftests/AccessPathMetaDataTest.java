@@ -17,30 +17,16 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
 /**
- * Black-box tests for
- * {@code List<ClassMetaData> addAccessPathMetaDatas(List<ClassMetaData> metas,
- * ClassMetaData[] path)}.
- *
- * <p><b>Contract:</b> Add the given access path metadatas to the full path list,
- * maintaining only base metadatas in the list. The given list may be null.</p>
- *
- * <p>The input domain is partitioned according to:</p>
- * <ul>
- *     <li>Accumulator:
- *     null, empty, already populated.</li>
- *     <li>Path:
- *     empty, single element, multiple elements.</li>
- *     <li>Relationship:
- *     unrelated metadata, duplicate metadata, inheritance relationship.</li>
- * </ul>
- *
- * <p>{@link ClassMetaData} cannot be instantiated directly from an external
- * package because its constructors are protected. Mockito is therefore used
- * only to provide valid collaborator objects satisfying the public contract.</p>
+ * Test per verificare il funzionamento di Filters.addAccessPathMetaDatas().
+ * Questo metodo serve a gestire un elenco di classi (metadati) per le query,
+ * applicando regole di ereditarietà per evitare duplicati e sovrapposizioni.
  */
 @DisplayName("Filters.addAccessPathMetaDatas")
 class AccessPathMetaDataTest {
 
+    // Classi simulate per creare una gerarchia di ereditarietà:
+    // Base <--- Derived (Derivata estende Base)
+    // Unrelated (Classe senza alcuna relazione)
     static class Base {
     }
 
@@ -55,15 +41,12 @@ class AccessPathMetaDataTest {
     private ClassMetaData unrelatedMeta;
 
     /**
-     * Creates coherent metadata objects representing:
+     * Prepara i dati di prova (Mock) simulando la gerarchia di classi:
      *
-     * <pre>
      * Base
-     *   |
-     * Derived
+     *  └─ Derived
      *
-     * Unrelated
-     * </pre>
+     * Unrelated (separata)
      */
     private void givenAHierarchy() {
 
@@ -112,11 +95,8 @@ class AccessPathMetaDataTest {
 
 
     /**
-     * Equivalence class:
-     * accumulator = null.
-     *
-     * The contract explicitly allows a null list, therefore the method must
-     * create and return a valid accumulator.
+     * Test: Se la lista di destinazione passata è null, il metodo deve crearne una nuova
+     * e inserirvi l'elemento anziché andare in errore.
      */
     @Test
     @DisplayName("null accumulator creates a new list")
@@ -124,11 +104,13 @@ class AccessPathMetaDataTest {
 
         givenAHierarchy();
 
+        // Passiamo 'null' come prima variabile (lista)
         List<ClassMetaData> result =
                 Filters.addAccessPathMetaDatas(
                         null,
                         new ClassMetaData[]{baseMeta});
 
+        // Controlliamo che abbia creato la lista e aggiunto baseMeta
         assertNotNull(result);
         assertEquals(1, result.size());
         assertSame(baseMeta, result.get(0));
@@ -136,10 +118,8 @@ class AccessPathMetaDataTest {
 
 
     /**
-     * Equivalence class:
-     * unrelated metadata.
-     *
-     * No inheritance relation exists, therefore all elements must remain.
+     * Test: Classi non imparentate tra loro (es. Base e Unrelated)
+     * devono essere entrambe mantenute nella lista.
      */
     @Test
     @DisplayName("unrelated metadata are preserved")
@@ -162,10 +142,8 @@ class AccessPathMetaDataTest {
 
 
     /**
-     * Equivalence class:
-     * duplicate metadata.
-     *
-     * The same metadata should not appear twice.
+     * Test: Se proviamo ad aggiungere lo stesso metadato due volte,
+     * non deve essere duplicato nella lista.
      */
     @Test
     @DisplayName("duplicate metadata is not inserted twice")
@@ -173,25 +151,26 @@ class AccessPathMetaDataTest {
 
         givenAHierarchy();
 
+        // La lista contiene già baseMeta
         List<ClassMetaData> metas =
                 new ArrayList<>(List.of(baseMeta));
 
+        // Proviamo ad aggiungere di nuovo baseMeta
         List<ClassMetaData> result =
                 Filters.addAccessPathMetaDatas(
                         metas,
                         new ClassMetaData[]{baseMeta});
 
+        // Dimensione ancora 1: non c'è stato alcun duplicato
         assertEquals(1, result.size());
         assertSame(baseMeta, result.get(0));
     }
 
 
     /**
-     * Equivalence class:
-     * base already present, derived added.
-     *
-     * Boundary of inheritance relation:
-     * the more specific metadata must disappear.
+     * Test: Regola di ereditarietà.
+     * Se la classe Base è già presente, aggiungere la classe Figlia (Derived) non serve:
+     * la classe Figlia viene ignorata perché compresa nella Base.
      */
     @Test
     @DisplayName("derived metadata is removed when base exists")
@@ -213,11 +192,9 @@ class AccessPathMetaDataTest {
 
 
     /**
-     * Boundary:
-     * inverse insertion order.
-     *
-     * Adding the base after the derived metadata must lead
-     * to the same final representation.
+     * Test: Inserimento inverso.
+     * Se la lista contiene la classe Figlia (Derived) e aggiungiamo la classe Base,
+     * la classe Base deve ***sostituire** la classe Figlia.
      */
     @Test
     @Tag("boundary")
@@ -226,24 +203,24 @@ class AccessPathMetaDataTest {
 
         givenAHierarchy();
 
+        // La lista contiene inizialmente la classe figlia
         List<ClassMetaData> metas =
                 new ArrayList<>(List.of(derivedMeta));
 
+        // Aggiungiamo la classe madre
         List<ClassMetaData> result =
                 Filters.addAccessPathMetaDatas(
                         metas,
                         new ClassMetaData[]{baseMeta});
 
+        // La classe figlia viene rimpiazzata dalla classe madre
         assertEquals(1, result.size());
         assertSame(baseMeta, result.get(0));
     }
 
 
     /**
-     * Boundary:
-     * empty path.
-     *
-     * Adding nothing must not modify the accumulator.
+     * Test: Passare un array vuoto non deve modificare la lista esistente.
      */
     @Test
     @Tag("boundary")
@@ -266,13 +243,9 @@ class AccessPathMetaDataTest {
 
 
     /**
-     * Robustness:
-     * null path.
-     *
-     * The contract does not specify this case.
-     * The test accepts either:
-     * - explicit rejection;
-     * - treating it as an empty path.
+     * Test di Robustezza: Passare 'null' al posto dell'array di elementi.
+     * Il sistema deve o gestire la cosa ignorando l'ingresso oppure lanciare un'eccezione
+     * controllata, senza corrompere la lista esistente.
      */
     @Test
     @Tag("robustness")
